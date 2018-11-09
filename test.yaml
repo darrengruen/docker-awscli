@@ -1,0 +1,20 @@
+schemaVersion: "2.0.0"
+
+commandTests:
+  - name: "Whoami"
+    command: "whoami"
+    expectedOutput: ["aws"]
+  - name: "which aws"
+    command: "which"
+    args: ["aws"]
+    expectedOutput: ['/home/aws/.local/bin/aws']
+  - name: "aws version"
+    command: "aws"
+    args: ["--version"]
+    expectedOutput: ["hello"]
+metadataTest:
+  cmd: ["--help"]
+  entrypoint: ["/home/aws/.local/bin/aws"]
+  exposedPorts: []
+  volumes: ["/home/aws/.aws"]
+  workdir: "/home/aws"
