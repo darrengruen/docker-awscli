@@ -11,10 +11,10 @@ commandTests:
   - name: "aws version"
     command: "aws"
     args: ["--version"]
-    expectedOutput: ["hello"]
+    expectedOutput: ["1.16.51"]
 metadataTest:
   cmd: ["--help"]
   entrypoint: ["/home/aws/.local/bin/aws"]
   exposedPorts: []
-  volumes: ["/home/aws/.aws"]
-  workdir: "/home/aws"
+  volumes: ["/home/aws/.aws", "/home/aws/app"]
+  workdir: "/home/aws/app"

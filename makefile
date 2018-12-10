@@ -1,10 +1,11 @@
+
 app        = $(shell basename "${PWD}" | sed 's|docker-||g')
-branch     = $(shell git rev-parse --abbrev-ref HEAD 2> /dev/null || echo "unstable")
+branch     = ${TRAVIS_BRANCH:-$(shell git rev-parse --abbrev-ref HEAD 2> /dev/null || echo "unstable")}
 build_date = $(shell date -u +%FT%T.%S%Z)
-commit     = $(shell git rev-parse --short HEAD 2> /dev/null || echo "unstable")
+commit     = ${TRAVIS_COMMIT:-$(shell git rev-parse --short HEAD 2> /dev/null || echo "unstable")}
 img        = ${ns}/${app}:${tag}
 ns         = gruen
-tag        = $(shell cat .VERSION)
+tag        = $(shell git rev-parse --abbrev-ref HEAD 2> /dev/null || echo "unstable")
 
 build:
 	docker build \

@@ -1,0 +1,7 @@
+language: minimal
+script:
+  - make lint
+  - make build
+  - make test
+  - make push
+
