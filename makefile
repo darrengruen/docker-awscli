@@ -16,6 +16,9 @@ build:
 	
 clean:
 	docker rmi ${img}
+
+lint:
+	docker run -i --rm hadolint/hadolint:latest < Dockerfile
 	
 push:
 	docker push ${img}
