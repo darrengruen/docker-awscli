@@ -4,7 +4,11 @@ CMD [ "--help" ]
 
 ENTRYPOINT [ "/home/aws/.local/bin/aws" ]
 
-RUN useradd -m aws
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+	  groff=1.22.3-9 \
+  && useradd -m aws \
+  && rm -rf /var/apt/lists/*
 
 USER aws
 
